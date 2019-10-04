@@ -30,3 +30,5 @@ python main.py
 
 自己增加了个挂机收金币升级建筑的函数upgrade_building ，但是容易卡死
 增加了自动收橙色建筑货物，并自动断网，赶走火车
+
+adb连接不上的参考这个“https://www.jianshu.com/p/3302ff6a3920”
