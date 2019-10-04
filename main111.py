@@ -1,6 +1,5 @@
 from automator import Automator
 from target import TargetType
-import time
 
 if __name__ == '__main__':
     # 声明货物要移动到的位置，注意根据实际情况调整，没摆出来的建筑可以注释掉
@@ -32,11 +31,6 @@ if __name__ == '__main__':
         TargetType.dianshitai:5,
         TargetType.jitui:6,
         TargetType.fuxing:3
-        # TargetType.smzx:4,
-        # TargetType.fzc:9,
-        # TargetType.hyyf:1,
-        # TargetType.rcgy:2,
-
 
 
     }
@@ -46,5 +40,3 @@ if __name__ == '__main__':
 
     # 启动脚本。
     instance.start()
-    # instance.upgrade_building(6,9)
-
