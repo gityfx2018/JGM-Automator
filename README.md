@@ -42,5 +42,5 @@ python main.py
 > 容易出现报错的情况
 ```1.src\loadsave.cpp:725: error:cv2.error: OpenCV(4.0.0) C:\projects\opencv-python\opencv\modules\imgcodecs\```
 打开 ATX ，点击“启动 UIAutomator”选项，确保 UIAutomator 是运行的
-
+'''如果ATX打开UIAutomator还是无法启动'''命令行进入模拟器的bin文件夹python -m uiautomator2 init
 其他错误的话根据打印信息自己调试把
