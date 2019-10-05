@@ -3,7 +3,7 @@ from cv import UIMatcher
 import uiautomator2 as u2
 from datetime import datetime,timedelta
 import time
-from sendmail import mail
+
 
 
 class Automator:
@@ -27,8 +27,7 @@ class Automator:
     def start(self):
         sleep_time = 3      #两次检测之间的间隔
         no_train_counter = 0        #连续没有检测到火车的次数
-        flag_start = 0
-        send_mail_count = 0
+        flag_wifi = 0
         while True:
             # 判断是否出现货物。
             Screen = self.d.screenshot(format="opencv")
@@ -37,39 +36,32 @@ class Automator:
 
             # 滑动屏幕，收割金币。
             self._swipe()
-            flag_start += 1
-            print("收金币次数：",flag_start)
-            # 设置收五次金币就检测一次火车
-            if flag_start == 5 :
-                flag_start = 0
+            flag_wifi += 1
+            print(flag_wifi)
+            if flag_wifi == 7 :
+                flag_wifi = 0
                 if UIMatcher.Detect_signal_object(Screen, 'Train.jpg'):
                     screen = self.d.screenshot(format="opencv")
                     for target in TargetType:
                         self._match_target(target, screen)
-                        print('检查有无漏网之鱼')
-                    # time.sleep(1)
-                    # 关闭家国梦
-                    # screen = self.d.screenshot(format="opencv")
-                    # if UIMatcher.Detect_signal_object(Screen, 'Train.jpg'):
-                    print("重启家国梦，wait 10s")
-                    self.d.app_stop("com.tencent.jgm")
-                    self.d.app_start("com.tencent.jgm")
-                    time.sleep(12)
-                    # self.d.adb_shell("adb shell am force-stop com.tencent.jgm")
-                    # print('重启家国梦')
-                    # self.d.adb_shell("adb shell am start -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -n com.tencent.jgm/com.tencent.jgm.MainActivity")
-                    # time.sleep(5)
+                        print('louwzyu')
+                    self.d.adb_shell("svc wifi disable")
+                    print('关闭wifi wait 1s')
+                    time.sleep(20)
+                    #self._swipe()
+                    self.d.adb_shell("svc wifi enable")
+                    print('开启wifi,wait 1s')
+                    time.sleep(8)
                 else:
                     print("继续")
-                    # no_train_counter = 0
-            train_jiance = 0
+
+
+
             if UIMatcher.Detect_signal_object(Screen, 'Train.jpg'):
-                train_jiance += 1
                 print('火车来了！')
                 no_train_counter = 0
-                success_counter = 0
-                if train_jiance == 0:
-                    time.sleep(2)       #第一次检测确保火车停了下来
+                success_counter = 0 
+                time.sleep(2)       #确保火车停了下来
                 screen = self.d.screenshot(format="opencv")
                 for target in TargetType:
                     if success_counter > 2:
@@ -78,19 +70,12 @@ class Automator:
                     if self._match_target(target,screen):
                         success_counter += 1
             else:
-                no_train_counter += 1
-                # 连续20次没检测到火车 说明火车跑完了
-                # 这里整个else可以不要 我是为了发邮件提醒自己 换建筑了
-                print("无火车次数：",no_train_counter)
-                if no_train_counter >= 20:
-                    print(f'连续{no_train_counter*sleep_time}s没有检测到火车,今日火车发货over！报告老大')
-                    send_mail_count += 1
-                    # 发送3次邮件提醒
-                    if send_mail_count <= 3:
-                        if mail(ret=True):
-                            print("发送邮件成功")
-            #
-    # 这个暂时没用 容易跑死
+                no_train_counter+=1
+                #if no_train_counter>=20:
+                    # print(f'连续{no_train_counter*sleep_time}s没有检测到火车,sleep_time变为{5*60}s')
+                    #sleep_time = 5*60
+            time.sleep(3)
+
     def upgrade_building(self,building_id,building_id2):
         flag = 0
         building_count1 = 0

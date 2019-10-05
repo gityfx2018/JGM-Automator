@@ -12,8 +12,8 @@ my_user = 'xxx'  # 收件人邮箱账号，我这边发送给自己
 def mail(ret=False):
     if ret == True:
         msg = MIMEText('填写邮件内容', 'plain', 'utf-8')
-        msg['From'] = formataddr(["Fromyufx", my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-        msg['To'] = formataddr(["余飞翔", my_user])  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+        msg['From'] = formataddr(["From_gityufx", my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
+        msg['To'] = formataddr(["gityufx", my_user])  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
         msg['Subject'] = "报告老大！！！今日火车发货over！"  # 邮件的主题，也可以说是标题
 
         server = smtplib.SMTP("smtp.qq.com", 25)  # 发件人邮箱中的SMTP服务器，端口是25
