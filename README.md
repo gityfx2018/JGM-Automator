@@ -1,8 +1,10 @@
 # 高效家国梦自动收割脚本
 
 > 这是基于 OpenCV 模板匹配的《家国梦》游戏自动化脚本。
-> （这个貌似只能本地用了）建议与[家国梦最佳建筑摆放计算](https://github.com/SQRPI/JiaGuoMeng)一起使用（这个貌似只能本地用了）
-> 墙裂推荐与[家国梦最佳建筑摆放计算](https://lintx.github.io/jgm-calculator/index.html)一起使用
+
+> （这个貌似只能本地用了）建议与[家国梦最佳建筑摆放计算](https://github.com/SQRPI/JiaGuoMeng)一起使用
+
+> 墙裂推荐（可以在线）与[家国梦最佳建筑摆放计算](https://lintx.github.io/jgm-calculator/index.html)一起使用
 牛掰的地方自己去瞧吧
 
 ## 安装与运行
@@ -30,7 +32,8 @@ python main.py
 请在target.py和main.py中根据自己的实际情况修改货物种类和建筑物位置，如需添加新的货物类型请再1920*1080分辨率下的MuMu中截图并添加。
 
 
-#自己做的diy
+
+##自己做的diy
 > 增加了自动收橙色建筑货物，并自动重启，赶走火车
 
 > adb连接不上的参考这个“https://www.jianshu.com/p/3302ff6a3920”
