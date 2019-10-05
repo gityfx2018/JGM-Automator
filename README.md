@@ -1,7 +1,9 @@
 # 高效家国梦自动收割脚本
 
 > 这是基于 OpenCV 模板匹配的《家国梦》游戏自动化脚本。
-> 建议与[家国梦最佳建筑摆放计算](https://github.com/SQRPI/JiaGuoMeng)一起使用
+> （这个貌似只能本地用了）建议与[家国梦最佳建筑摆放计算](https://github.com/SQRPI/JiaGuoMeng)一起使用（这个貌似只能本地用了）
+> 墙裂推荐与[家国梦最佳建筑摆放计算](https://lintx.github.io/jgm-calculator/index.html)一起使用
+牛掰的地方自己去瞧吧
 
 ## 安装与运行
 
@@ -28,12 +30,14 @@ python main.py
 请在target.py和main.py中根据自己的实际情况修改货物种类和建筑物位置，如需添加新的货物类型请再1920*1080分辨率下的MuMu中截图并添加。
 
 
-##自己做的diy
-> 自定义自己增加了个挂机收金币升级建筑的函数upgrade_building ，但是容易卡死
-> 增加了自动收橙色建筑货物，并自动断网，赶走火车
+#自己做的diy
+> 增加了自动收橙色建筑货物，并自动重启，赶走火车
 
 > adb连接不上的参考这个“https://www.jianshu.com/p/3302ff6a3920”
 > 我的建筑摆放图在assets里面
-30339💗35091 35227
-539蓝 3065
-1243红包 2117
+
+> 容易出现报错的情况
+```1.src\loadsave.cpp:725: error:cv2.error: OpenCV(4.0.0) C:\projects\opencv-python\opencv\modules\imgcodecs\```
+打开 ATX ，点击“启动 UIAutomator”选项，确保 UIAutomator 是运行的
+
+其他错误的话根据打印信息自己调试把
